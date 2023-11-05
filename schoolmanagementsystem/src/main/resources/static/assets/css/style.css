@@ -1,0 +1,33 @@
+body {
+	font-family: "Open Sans", sans-serif;
+	background-color: beige;
+}
+
+.link-primary {
+	text-decoration: none;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.div-link {
+	padding-top: 20px;
+}
+
+.caption {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.footer {
+	padding: 20px 0;
+	font-size: 16px;
+	color: floralwhite;
+	transition: all 0.3s;
+	/* border-top: 1px solid ;*/
+	margin-top: auto;
+	/* position: fixed;*/
+	bottom: 0;
+	width: 100%;
+	background-color: black;
+	text-align: center;
+}

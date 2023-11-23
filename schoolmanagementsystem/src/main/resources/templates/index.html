@@ -12,40 +12,9 @@
 </head>
 
 <body>
-	<header>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-			<div class="container-fluid">
-				<a class="navbar-brand">BenGuides</a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-					aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarNav">
-					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">About</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Students</a></li>
-						<li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#subjects-tab">Courses</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Staff</a></li>
-						<li class="nav-item">
-							<div class="dropdown">
-								<a class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" role="button"
-									data-bs-toggle="dropdown" aria-expanded="false">Admissions</a>
-								<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-									<li><a class="dropdown-item" href="#">Application Procedure</a></li>
-									<li><a class="dropdown-item" th:href="@{students/addStudentForm}">Admit Student</a>
-									</li>
-									<li><a class="dropdown-item" href="#">Fee Structure</a></li>
-								</ul>
-							</div>
-						</li>
-					</ul>
-				</div>
-
-			</div>
-		</nav> <!-- End of nav bar -->
-	</header>
-	<div class="container-fluid mt-5">
+	<!-- Include the header fragment -->
+	<div th:replace="fragments/header :: header"></div>
+	<div class="container-fluid mt-3 mb-3">
 		<ul class="nav nav-tabs">
 			<li class="nav-item">
 				<a class="nav-link active" data-bs-toggle="tab" href="#students-tab">Students</a>
@@ -131,12 +100,8 @@
 		</div>
 		<!-- End of Subjects tab -->
 	</div>
-	<!-- footer -->
-	<footer class="footer">
-		<div class="container">
-			&copy; Benguides 2023. All rights reserved
-		</div>
-	</footer>
+<!-- Include the footer fragment -->
+	<div th:replace="fragments/footer :: footer"></div>
 </body>
 
 </html>

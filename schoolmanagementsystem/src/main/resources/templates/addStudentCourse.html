@@ -11,38 +11,9 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-		<div class="container-fluid">
-			<a class="navbar-brand">BenGuides</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{/}">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">About</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Students</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Courses</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Staff</a></li>
-					<li class="nav-item">
-						<div class="dropdown">
-							<a class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" role="button"
-								data-bs-toggle="dropdown" aria-expanded="false">Admissions</a>
-							<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-								<li><a class="dropdown-item" href="#">Application Procedure</a></li>
-								<li><a class="dropdown-item" th:href="@{students/addStudentForm}">Admit Student</a>
-								</li>
-								<li><a class="dropdown-item" href="#">Fee Structure</a></li>
-							</ul>
-						</div>
-					</li>
-				</ul>
-			</div>
-
-		</div>
-	</nav> <!-- End of nav bar -->
-	<div class="container">
+	<!-- Include the header fragment -->
+	<div th:replace="fragments/header :: header"></div>
+	<div class="container mt-3 mb-3">
 		<section class="h-100 h-custom" style="background-color: #8fc4b7;">
 			<div class="container py-5 h-100">
 				<div class="row d-flex justify-content-center align-items-center h-100">
@@ -51,8 +22,8 @@
 							<div class="card-body p-4 p-md-5">
 								<h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Student Info</h3>
 
-								<form th:action="@{studentAddCourse/{id}(id=${student.id})/course}" th:object="${student}" method="POST"
-									class="px-md-2" enctype="multipart/form-data">
+								<form th:action="@{studentAddCourse/{id}(id=${student.id})/course}"
+									th:object="${student}" method="POST" class="px-md-2" enctype="multipart/form-data">
 									<span th:each="student: ${studentCourses}">
 										<div class="col-md-6">
 											<div class="form-outline mb-4">
@@ -86,17 +57,19 @@
 												<span th:text="${#dates.format(student.dob, 'yyyy-MM-dd')}"></span>
 											</div>
 										</div>
-									</span>
-									<div class="col-md-6">
+										<div class="col-md-6">
 											<div class="form-outline mb-4">
-												<b>Course:</b>
-												
+												<b>Courses:</b><br>
+												<span th:each="student: ${student.courses}">
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span th:text="${student.description}"></span><br>
+												</span>
 											</div>
 										</div>
+									</span>
 									<hr>
 									<div class="col-md-6">
 										<div class="form-outline mb-4">
-											<b>Courses:</b>
+											<b>Add Course:</b>
 											<select class="form-control" name="courseId">
 												<option th:each="course : ${courses}" th:value="${course.courseId}"
 													th:text="${course.description}"></option>
@@ -115,12 +88,8 @@
 			</div>
 		</section>
 	</div>
-	<!-- footer -->
-	<footer class="footer">
-		<div class="container">
-			&copy; Benguides 2023. All rights reserved
-		</div>
-	</footer>
+<!-- Include the footer fragment -->
+	<div th:replace="fragments/footer :: footer"></div>
 </body>
 
 </html>
